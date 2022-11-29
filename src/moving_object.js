@@ -1,5 +1,5 @@
 //Base class for anything that moves.
-// Most important methods are MovingObject.prototype.move, 
+// Most important methods are MovingObject.prototype.move,
 // MovingObject.prototype.draw(ctx), and MovingObject.prototype.isCollidedWith(otherMovingObject)
 
 class MovingObject{
@@ -8,7 +8,25 @@ class MovingObject{
         this.vel = options["vel"];
         this.radius = options["radius"];
         this.color = options["color"];
-    } 
+    }
 }
+
+MovingObject.prototype.draw = function (ctx) {
+  ctx.fillStyle = this.color;
+  ctx.beginPath();
+
+  ctx.arc(
+    this.centerX,
+    this.centerY,
+    this.radius,
+    0,
+    2 * Math.PI,
+    false
+  );
+
+  ctx.fill();
+};
+
+
 
 module.exports = MovingObject;
